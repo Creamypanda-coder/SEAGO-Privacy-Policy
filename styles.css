@@ -254,33 +254,13 @@ body:not([data-theme="dark"]) .header {
 }
 
 /* Language Visibility Rules */
-.lang-id {
+html[lang="en"] .lang-id,
+html:not([lang="id"]) .lang-id {
   display: none !important;
 }
 
 html[lang="id"] .lang-en {
   display: none !important;
-}
-
-html[lang="id"] .lang-id {
-  display: block !important;
-}
-
-/* Specific display overrides for lists/inlines/grids when lang=id is active */
-html[lang="id"] span.lang-id {
-  display: inline !important;
-}
-
-html[lang="id"] div.card-grid.lang-id {
-  display: grid !important;
-}
-
-html[lang="id"] li.lang-id {
-  display: list-item !important;
-}
-
-html[lang="id"] option.lang-id {
-  display: block !important;
 }
 
 /* Theme Toggle Button */
@@ -798,6 +778,10 @@ body:not([data-theme="dark"]) .market-btn:hover {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --header-height: 60px;
+  }
+
   h1 {
     font-size: 1.875rem;
   }
@@ -806,8 +790,55 @@ body:not([data-theme="dark"]) .market-btn:hover {
     padding: 3rem 1rem;
   }
   
+  .layout-container {
+    padding: 0 1rem;
+  }
+  
   .content {
     padding-bottom: 4rem;
+  }
+  
+  /* Header Mobile Optimizations */
+  .header-container {
+    padding: 0 1rem;
+  }
+  
+  .logo-image {
+    height: 32px;
+  }
+  
+  .logo-badge {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+  }
+  
+  .header-actions {
+    gap: 0.75rem;
+  }
+  
+  .header-actions .market-btn {
+    display: none !important;
+  }
+  
+  /* Card Mobile Optimizations */
+  .info-card {
+    padding: 1rem;
+  }
+  
+  /* Contact Details Stack on Mobile */
+  .contact-details li {
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-details li strong {
+    width: auto;
+  }
+  
+  .contact-details li span a {
+    word-break: break-all;
+    overflow-wrap: break-word;
   }
   
   .footer-nav {
