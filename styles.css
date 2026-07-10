@@ -213,6 +213,76 @@ body:not([data-theme="dark"]) .header {
   gap: 1.25rem;
 }
 
+/* Language Switcher Styling */
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+  padding: 0.15rem;
+  border-radius: 9999px;
+  background-color: var(--bg-secondary);
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+.lang-btn:hover {
+  color: var(--text-primary);
+}
+
+.lang-btn.active {
+  color: #ffffff;
+  background-color: var(--brand-orange);
+}
+
+[data-theme="dark"] .lang-btn.active {
+  color: #ffffff;
+  background-color: var(--brand-orange);
+}
+
+/* Language Visibility Rules */
+.lang-id {
+  display: none !important;
+}
+
+html[lang="id"] .lang-en {
+  display: none !important;
+}
+
+html[lang="id"] .lang-id {
+  display: block !important;
+}
+
+/* Specific display overrides for lists/inlines/grids when lang=id is active */
+html[lang="id"] span.lang-id {
+  display: inline !important;
+}
+
+html[lang="id"] div.card-grid.lang-id {
+  display: grid !important;
+}
+
+html[lang="id"] li.lang-id {
+  display: list-item !important;
+}
+
+html[lang="id"] option.lang-id {
+  display: block !important;
+}
+
 /* Theme Toggle Button */
 .theme-toggle-btn {
   background: none;

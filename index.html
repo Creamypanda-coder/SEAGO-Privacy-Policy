@@ -30,20 +30,23 @@
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="https://seago.id/favicon.ico">
   
-  <!-- Preload Font script-less theme sync to avoid Flash of Unstyled Content (FOUC) -->
+  <!-- Preload Theme & Language sync to avoid Flash of Unstyled Content (FOUC) -->
   <script>
     (function () {
       const savedTheme = localStorage.getItem('theme') || 'light';
       if (savedTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
       }
+      const savedLang = localStorage.getItem('lang') || 'en';
+      document.documentElement.setAttribute('lang', savedLang);
     })();
   </script>
 </head>
 <body>
   
   <!-- Accessibility Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link lang-en">Skip to main content</a>
+  <a href="#main-content" class="skip-link lang-id">Lompat ke konten utama</a>
   
   <!-- Header / Navigation Bar -->
   <header class="header">
@@ -54,6 +57,12 @@
       </a>
       
       <div class="header-actions">
+        <!-- Segmented Language Selector Toggle (EN Default) -->
+        <div class="lang-selector" aria-label="Select Language">
+          <button class="lang-btn" data-lang="en" aria-label="English Language">EN</button>
+          <button class="lang-btn" data-lang="id" aria-label="Bahasa Indonesia">ID</button>
+        </div>
+
         <!-- Accessible Dark/Light Mode Toggle -->
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
           <!-- Sun Icon (Active when dark theme applied) -->
@@ -73,7 +82,8 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <a href="https://seago.id" class="market-btn">Visit Marketplace</a>
+        <a href="https://seago.id" class="market-btn lang-en">Visit Marketplace</a>
+        <a href="https://seago.id" class="market-btn lang-id">Kunjungi Pasar</a>
       </div>
     </div>
   </header>
@@ -81,31 +91,58 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-container">
-      <span class="hero-badge">Official Policy</span>
-      <h1>Privacy Policy</h1>
-      <p class="hero-subtitle">Your privacy is important to PT Seago Logistik Maritim. Find out how we safeguard your personal data across the SEAGO MARKET platform and mobile services.</p>
+      <span class="hero-badge lang-en">Official Policy</span>
+      <span class="hero-badge lang-id">Kebijakan Resmi</span>
+      
+      <h1 class="lang-en">Privacy Policy</h1>
+      <h1 class="lang-id">Kebijakan Privasi</h1>
+      
+      <p class="hero-subtitle lang-en">Your privacy is important to PT Seago Logistik Maritim. Find out how we safeguard your personal data across the SEAGO MARKET platform and mobile services.</p>
+      <p class="hero-subtitle lang-id">Privasi Anda sangat penting bagi PT Seago Logistik Maritim. Temukan bagaimana kami melindungi data pribadi Anda di platform SEAGO MARKET dan layanan seluler.</p>
+      
       <div class="hero-meta">
-        <span>Effective Date: July 10, 2026</span> • <span>Last Updated: July 10, 2026</span>
+        <span class="lang-en">Effective Date: July 10, 2026</span>
+        <span class="lang-id">Tanggal Berlaku: 10 Juli 2026</span>
+        • 
+        <span class="lang-en">Last Updated: July 10, 2026</span>
+        <span class="lang-id">Terakhir Diperbarui: 10 Juli 2026</span>
       </div>
     </div>
   </section>
   
   <!-- Mobile Quick Navigation Menu (Hidden on desktop) -->
   <div class="mobile-nav-bar" aria-label="Mobile Navigation Drawer">
-    <label for="mobile-nav-select" class="skip-link">Jump to Section</label>
+    <label for="mobile-nav-select" class="skip-link lang-en">Jump to Section</label>
+    <label for="mobile-nav-select" class="skip-link lang-id">Lompat ke Bagian</label>
+    
     <select id="mobile-nav-select" class="mobile-nav-select">
-      <option value="#intro">Introduction</option>
-      <option value="#info-collect">1. Information We Collect</option>
-      <option value="#how-use">2. How We Use Your Information</option>
-      <option value="#data-sharing">3. Data Sharing</option>
-      <option value="#data-security">4. Data Security</option>
-      <option value="#user-rights">5. User Rights</option>
-      <option value="#cookies">6. Cookie Usage</option>
-      <option value="#third-party">7. Third Party Services</option>
-      <option value="#children">8. Children's Privacy</option>
-      <option value="#retention">9. Data Retention</option>
-      <option value="#changes">10. Changes to this Policy</option>
-      <option value="#contact">11. Contact Information</option>
+      <!-- English Dropdown Options -->
+      <option value="#intro" class="lang-en">Introduction</option>
+      <option value="#info-collect" class="lang-en">1. Information We Collect</option>
+      <option value="#how-use" class="lang-en">2. How We Use Your Information</option>
+      <option value="#data-sharing" class="lang-en">3. Data Sharing</option>
+      <option value="#data-security" class="lang-en">4. Data Security</option>
+      <option value="#user-rights" class="lang-en">5. User Rights</option>
+      <option value="#cookies" class="lang-en">6. Cookie Usage</option>
+      <option value="#third-party" class="lang-en">7. Third Party Services</option>
+      <option value="#children" class="lang-en">8. Children's Privacy</option>
+      <option value="#retention" class="lang-en">9. Data Retention</option>
+      <option value="#changes" class="lang-en">10. Changes to this Policy</option>
+      <option value="#contact" class="lang-en">11. Contact Information</option>
+      
+      <!-- Indonesian Dropdown Options -->
+      <option value="#intro" class="lang-id">Pendahuluan</option>
+      <option value="#info-collect" class="lang-id">1. Informasi yang Kami Kumpulkan</option>
+      <option value="#how-use" class="lang-id">2. Bagaimana Kami Menggunakan Informasi</option>
+      <option value="#data-sharing" class="lang-id">3. Pembagian Data</option>
+      <option value="#data-security" class="lang-id">4. Keamanan Data</option>
+      <option value="#user-rights" class="lang-id">5. Hak Pengguna</option>
+      <option value="#cookies" class="lang-id">6. Penggunaan Cookie</option>
+      <option value="#third-party" class="lang-id">7. Layanan Pihak Ketiga</option>
+      <option value="#children" class="lang-id">8. Privasi Anak-anak</option>
+      <option value="#retention" class="lang-id">9. Retensi Data</option>
+      <option value="#changes" class="lang-id">10. Perubahan Kebijakan Ini</option>
+      <option value="#contact" class="lang-id">11. Informasi Kontak</option>
     </select>
   </div>
   
@@ -114,21 +151,58 @@
     
     <!-- Left Sidebar (Desktop Table of Contents) -->
     <aside class="sidebar" aria-label="Table of Contents">
-      <h2 class="toc-title">ON THIS PAGE</h2>
+      <h2 class="toc-title lang-en">ON THIS PAGE</h2>
+      <h2 class="toc-title lang-id">PADA HALAMAN INI</h2>
       <nav>
         <ul class="toc-list">
-          <li class="toc-item"><a href="#intro" class="toc-link active">Introduction</a></li>
-          <li class="toc-item"><a href="#info-collect" class="toc-link">1. Information We Collect</a></li>
-          <li class="toc-item"><a href="#how-use" class="toc-link">2. How We Use Your Information</a></li>
-          <li class="toc-item"><a href="#data-sharing" class="toc-link">3. Data Sharing</a></li>
-          <li class="toc-item"><a href="#data-security" class="toc-link">4. Data Security</a></li>
-          <li class="toc-item"><a href="#user-rights" class="toc-link">5. User Rights</a></li>
-          <li class="toc-item"><a href="#cookies" class="toc-link">6. Cookie Usage</a></li>
-          <li class="toc-item"><a href="#third-party" class="toc-link">7. Third Party Services</a></li>
-          <li class="toc-item"><a href="#children" class="toc-link">8. Children's Privacy</a></li>
-          <li class="toc-item"><a href="#retention" class="toc-link">9. Data Retention</a></li>
-          <li class="toc-item"><a href="#changes" class="toc-link">10. Changes to this Policy</a></li>
-          <li class="toc-item"><a href="#contact" class="toc-link">11. Contact Information</a></li>
+          <li class="toc-item">
+            <a href="#intro" class="toc-link active lang-en">Introduction</a>
+            <a href="#intro" class="toc-link active lang-id">Pendahuluan</a>
+          </li>
+          <li class="toc-item">
+            <a href="#info-collect" class="toc-link lang-en">1. Information We Collect</a>
+            <a href="#info-collect" class="toc-link lang-id">1. Informasi Kumpulkan</a>
+          </li>
+          <li class="toc-item">
+            <a href="#how-use" class="toc-link lang-en">2. How We Use Your Information</a>
+            <a href="#how-use" class="toc-link lang-id">2. Penggunaan Informasi</a>
+          </li>
+          <li class="toc-item">
+            <a href="#data-sharing" class="toc-link lang-en">3. Data Sharing</a>
+            <a href="#data-sharing" class="toc-link lang-id">3. Pembagian Data</a>
+          </li>
+          <li class="toc-item">
+            <a href="#data-security" class="toc-link lang-en">4. Data Security</a>
+            <a href="#data-security" class="toc-link lang-id">4. Keamanan Data</a>
+          </li>
+          <li class="toc-item">
+            <a href="#user-rights" class="toc-link lang-en">5. User Rights</a>
+            <a href="#user-rights" class="toc-link lang-id">5. Hak Pengguna</a>
+          </li>
+          <li class="toc-item">
+            <a href="#cookies" class="toc-link lang-en">6. Cookie Usage</a>
+            <a href="#cookies" class="toc-link lang-id">6. Penggunaan Cookie</a>
+          </li>
+          <li class="toc-item">
+            <a href="#third-party" class="toc-link lang-en">7. Third Party Services</a>
+            <a href="#third-party" class="toc-link lang-id">7. Layanan Pihak Ketiga</a>
+          </li>
+          <li class="toc-item">
+            <a href="#children" class="toc-link lang-en">8. Children's Privacy</a>
+            <a href="#children" class="toc-link lang-id">8. Privasi Anak-anak</a>
+          </li>
+          <li class="toc-item">
+            <a href="#retention" class="toc-link lang-en">9. Data Retention</a>
+            <a href="#retention" class="toc-link lang-id">9. Retensi Data</a>
+          </li>
+          <li class="toc-item">
+            <a href="#changes" class="toc-link lang-en">10. Changes to this Policy</a>
+            <a href="#changes" class="toc-link lang-id">10. Perubahan Kebijakan</a>
+          </li>
+          <li class="toc-item">
+            <a href="#contact" class="toc-link lang-en">11. Contact Information</a>
+            <a href="#contact" class="toc-link lang-id">11. Informasi Kontak</a>
+          </li>
         </ul>
       </nav>
     </aside>
@@ -136,196 +210,448 @@
     <!-- Main Content Area -->
     <main id="main-content" class="content">
       
+      <!-- Introduction -->
       <section id="intro" class="content-section">
-        <h2>Introduction</h2>
-        <p>PT Seago Logistik Maritim (hereinafter, <strong>"SEAGO"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, or <strong>"our"</strong>) respects your personal privacy and is committed to protecting the privacy of our users, suppliers, ship operators, and partners. This Privacy Policy details our practices concerning the collection, storage, processing, transfer, protection, and disclosure of personal data collected through the <strong>SEAGO MARKET</strong> mobile applications (available on the Google Play Store and other distribution platforms) and the website <a href="https://seago.id">https://seago.id</a> (collectively, the <strong>"Platform"</strong>).</p>
-        <p>By registering an account, utilizing the Platform, or engaging with our maritime marketplace and logistics services, you acknowledge that you have read and understood this Privacy Policy. We comply with all applicable Indonesian regulations concerning personal data protection, including <strong>Law No. 27 of 2022 on Personal Data Protection ("UU PDP")</strong>, <strong>Law No. 11 of 2008 on Electronic Information and Transactions (as amended, "UU ITE")</strong>, and <strong>Ministry of Communication and Informatics Regulation No. 20 of 2016 on Personal Data Protection in Electronic Systems</strong>.</p>
+        <!-- English -->
+        <div class="lang-en">
+          <h2>Introduction</h2>
+          <p>PT Seago Logistik Maritim (hereinafter, <strong>"SEAGO"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, or <strong>"our"</strong>) respects your personal privacy and is committed to protecting the privacy of our users, suppliers, ship operators, and partners. This Privacy Policy details our practices concerning the collection, storage, processing, transfer, protection, and disclosure of personal data collected through the <strong>SEAGO MARKET</strong> mobile applications (available on the Google Play Store and other distribution platforms) and the website <a href="https://seago.id">https://seago.id</a> (collectively, the <strong>"Platform"</strong>).</p>
+          <p>By registering an account, utilizing the Platform, or engaging with our maritime marketplace and logistics services, you acknowledge that you have read and understood this Privacy Policy. We comply with all applicable Indonesian regulations concerning personal data protection, including <strong>Law No. 27 of 2022 on Personal Data Protection ("UU PDP")</strong>, <strong>Law No. 11 of 2008 on Electronic Information and Transactions (as amended, "UU ITE")</strong>, and <strong>Ministry of Communication and Informatics Regulation No. 20 of 2016 on Personal Data Protection in Electronic Systems</strong>.</p>
+        </div>
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>Pendahuluan</h2>
+          <p>PT Seago Logistik Maritim (selanjutnya disebut sebagai <strong>"SEAGO"</strong>, <strong>"kami"</strong>, atau <strong>"kita"</strong>) menghormati privasi pribadi Anda dan berkomitmen untuk melindungi informasi pengguna, pemasok, operator kapal, dan mitra kami. Kebijakan Privasi ini menjelaskan praktik kami mengenai pengumpulan, penyimpanan, pemrosesan, transfer, pelindungan, dan pengungkapan data pribadi yang dikumpulkan melalui aplikasi seluler <strong>SEAGO MARKET</strong> (tersedia di Google Play Store dan platform distribusi lainnya) serta situs web <a href="https://seago.id">https://seago.id</a> (secara kolektif disebut sebagai <strong>"Platform"</strong>).</p>
+          <p>Dengan mendaftarkan akun, menggunakan Platform, atau berinteraksi dengan marketplace maritim dan layanan logistik kami, Anda mengakui bahwa Anda telah membaca dan memahami Kebijakan Privasi ini. Kami mematuhi semua peraturan perundang-undangan di Indonesia mengenai pelindungan data pribadi yang berlaku, termasuk <strong>Undang-Undang No. 27 Tahun 2022 tentang Pelindungan Data Pribadi ("UU PDP")</strong>, <strong>Undang-Undang No. 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik (sebagaimana telah diubah, "UU ITE")</strong>, dan <strong>Peraturan Menteri Komunikasi dan Informatika No. 20 Tahun 2016 tentang Pelindungan Data Pribadi dalam Sistem Elektronik</strong>.</p>
+        </div>
       </section>
       
+      <!-- Section 1 -->
       <section id="info-collect" class="content-section">
-        <h2>1. Information We Collect</h2>
-        <p>To provide our specialized maritime marketplace, ship supply, and logistics integration services, we collect various categories of information. This information is processed and stored in our database in compliance with Indonesian data protection guidelines (UU PDP).</p>
-        
-        <h3>Information Provided Voluntarily</h3>
-        <p>During user registration, store onboarding, and order checkout processes, we collect the following data:</p>
-        <div class="card-grid">
-          <div class="info-card">
-            <h4>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-              Customer & User Accounts
-            </h4>
-            <p>Username, Email Address, Phone Number, and cryptographically hashed passwords. Users can be registered under 'user' or 'admin' access roles.</p>
+        <!-- English -->
+        <div class="lang-en">
+          <h2>1. Information We Collect</h2>
+          <p>To provide our specialized maritime marketplace, ship supply, and logistics integration services, we collect various categories of information. This information is processed and stored in our database in compliance with Indonesian data protection guidelines (UU PDP).</p>
+          
+          <h3>Information Provided Voluntarily</h3>
+          <p>During user registration, store onboarding, and order checkout processes, we collect the following data:</p>
+          <div class="card-grid">
+            <div class="info-card">
+              <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                Customer & User Accounts
+              </h4>
+              <p>Username, Email Address, Phone Number, and cryptographically hashed passwords. Users can be registered under 'user' or 'admin' access roles.</p>
+            </div>
+            <div class="info-card">
+              <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h18v3H3V3z"/></svg>
+                Mitra Toko (Store Partners)
+              </h4>
+              <p>Store Name, business description, store logo, address, phone number, email address, and bank routing credentials (bank name, account holder's name, and bank account number) for processing store payouts.</p>
+            </div>
           </div>
-          <div class="info-card">
-            <h4>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h18v3H3V3z"/></svg>
-              Mitra Toko (Store Partners)
-            </h4>
-            <p>Store Name, business description, store logo, address, phone number, email address, and bank routing credentials (bank name, account holder's name, and bank account number) for processing store payouts.</p>
-          </div>
-        </div>
-        
-        <h3>Transaction, Shipping, and Payment Data</h3>
-        <p>When you place an order or coordinate ship supplies on the Platform, we process details related to transaction fulfillment:</p>
-        <ul>
-          <li><strong>Consignee Details:</strong> Customer name, telephone contact, and delivery/shipping address (representing the vessel landing docks at the port).</li>
-          <li><strong>Vessel Schedule Details:</strong> We collect <strong>ship arrival days</strong> (vessel ETA schedules) to synchronize time-sensitive maritime logistics deliveries.</li>
-          <li><strong>Transaction Metadata:</strong> Total order amount, specific ordering items, quantities, and custom delivery notes.</li>
-          <li><strong>Payment Verification:</strong> Selected payment method ('cod' cash on delivery or 'transfer' bank transfer) and <strong>uploaded payment proof files</strong> (images or receipt files representing bank transfers) for verification.</li>
-        </ul>
-
-        <h3>AI Chat Assistant Interactions</h3>
-        <p>When you converse with our <strong>AI Chat Assistant</strong> (powered by the Google Gemini API) on the Platform, we process the text prompts and search inquiries you type to retrieve matches from our products directory and offer real-time recommendations.</p>
-        
-        <h3>Information Collected Automatically</h3>
-        <p>When you access our platform via computer or mobile applications, we collect telemetry and device information:</p>
-        <ul>
-          <li><strong>Device Metadata:</strong> IP Address, device model, Operating System version, session tokens, and web browser type.</li>
-          <li><strong>Platform Activity:</strong> Pages visited, clicked links, session timestamps, and product catalog searches.</li>
-          <li><strong>Location Information:</strong> Precise geographical location (GPS coords) is collected <strong>only</strong> if you explicitly grant permission on your mobile device or browser. This is used to coordinate shipping routes and estimated coordinates of maritime vessels for delivery tracking.</li>
-        </ul>
-      </section>
-      
-      <section id="how-use" class="content-section">
-        <h2>2. How We Use Your Information</h2>
-        <p>We process personal data for legal, operational, and development purposes. The processing is conducted under Indonesian data protection regulations (UU PDP) to fulfill our contractual obligations to you and our legal duties. Specifically, we use your data for:</p>
-        
-        <div class="card-grid">
-          <div class="info-card">
-            <h4>Account & Service Operations</h4>
-            <p>Facilitating customer registration, merchant onboarding, validating store profiles, and authorizing secure user authentication.</p>
-          </div>
-          <div class="info-card">
-            <h4>Order Fulfillment & Logistics</h4>
-            <p>Routing purchase orders to relevant stores, organizing port drop-offs, synchronizing schedules via <strong>ship arrival days</strong>, and generating automatic handover documents and invoices (PDF).</p>
-          </div>
-          <div class="info-card">
-            <h4>Gemini AI Integrations</h4>
-            <p>Powering the <strong>AI Chat Assistant</strong> to match customer messages with product lists, and parsing merchant invoices for inventory updates through the <strong>Gemini AI Bulk Import</strong>.</p>
-          </div>
-          <div class="info-card">
-            <h4>WhatsApp Communication</h4>
-            <p>Forwarding checkout orders and instant notifications directly to Admin and Merchant <strong>WhatsApp</strong> numbers to speed up response times.</p>
-          </div>
-          <div class="info-card">
-            <h4>Payment Proof Verification</h4>
-            <p>Reviewing and validating uploaded <strong>payment proof</strong> bank receipts to transition purchase status from pending to verified.</p>
-          </div>
-          <div class="info-card">
-            <h4>Security & Error Logs</h4>
-            <p>Monitoring session tokens to prevent hijacking, keeping error logs for system maintenance, and shielding database structures from SQL injections.</p>
-          </div>
-        </div>
-      </section>
-      
-      <section id="data-sharing" class="content-section">
-        <h2>3. Data Sharing</h2>
-        <p><strong>PT Seago Logistik Maritim does not sell, rent, or trade your personal data to third parties.</strong></p>
-        <p>We may share necessary personal data only with trusted third-party service providers and corporate partners under strict data processing agreements that comply with the UU PDP. Data is shared with:</p>
-        
-        <ol>
-          <li><strong>Shipping Companies & Suppliers:</strong> To coordinate orders, ship supply provisioning, and logistics drop-offs at designated ports.</li>
-          <li><strong>Logistics Partners:</strong> Freight operators, maritime agents, and delivery personnel servicing the ports.</li>
-          <li><strong>Payment Gateways & Banks:</strong> Banking institutions and payment processors to verify and reconcile bank transfer deposits.</li>
-          <li><strong>Cloud Infrastructure Providers:</strong> Secure hosting environments, database engines, and backup systems managing the digital infrastructure in compliance with Indonesian data residency standards.</li>
-          <li><strong>Google Gemini API:</strong> Chat prompts and queries inputted inside the AI Chat Assistant (`ai_chat.php`) are forwarded to Google Gemini APIs to fetch matched products and prices dynamically.</li>
-          <li><strong>WhatsApp Services:</strong> Order invoices and customer telephone coordinates are forwarded via WhatsApp to store owners and administrators to execute procurement updates.</li>
-          <li><strong>Legal & Regulatory Authorities:</strong> Competent government bodies, courts, or law enforcement officers when strictly required by Indonesian legislation or judicial orders.</li>
-        </ol>
-      </section>
-      
-      <section id="data-security" class="content-section">
-        <h2>4. Data Security</h2>
-        <p>We implement a robust, defense-in-depth security framework to safeguard personal data against unauthorized access, manipulation, leakage, or loss. Our administrative and technical protections include:</p>
-        
-        <div class="card-grid">
-          <div class="info-card">
-            <h4>Network Encryption</h4>
-            <p>Mandatory HTTPS connection protocol across all services with transport-layer SSL/TLS encryption for data in transit.</p>
-          </div>
-          <div class="info-card">
-            <h4>Access Controls</h4>
-            <p>Strict role-based access control (RBAC) ensuring only authorized SEAGO compliance staff can interact with core user data.</p>
-          </div>
-          <div class="info-card">
-            <h4>Cryptography</h4>
-            <p>Standardized password hashing (salted bcrypt/argon2) preventing credential exposures and secure database encryption at rest.</p>
-          </div>
-          <div class="info-card">
-            <h4>Infrastructure Defense</h4>
-            <p>Enterprise firewalls, security incident monitoring (SIEM), routine vulnerability assessments, and automatic offsite backups.</p>
-          </div>
-        </div>
-      </section>
-      
-      <section id="user-rights" class="content-section">
-        <h2>5. User Rights</h2>
-        <p>In accordance with Chapter VI of Law No. 27 of 2022 on Personal Data Protection (UU PDP), as a data subject, you hold specific enforceable statutory rights. You may execute these rights at any time by contacting our support team:</p>
-        
-        <ul>
-          <li><strong>Right to Access:</strong> Request a comprehensive copy of your personal data stored in our databases.</li>
-          <li><strong>Right to Rectification:</strong> Request correction of incomplete, inaccurate, or outdated data associated with your SEAGO MARKET account.</li>
-          <li><strong>Right to Erasure (Right to be Forgotten):</strong> Request the permanent deletion of your account and related records, subject to regulatory retention laws.</li>
-          <li><strong>Right to Data Portability:</strong> Obtain a structured, commonly used machine-readable copy of your personal data for transmission to another data controller.</li>
-          <li><strong>Right to Withdraw Consent:</strong> Revoke consent previously granted for optional processing (e.g., location tracking, marketing alerts).</li>
-          <li><strong>Right to Object:</strong> Oppose or request restriction of data processing for specific activities.</li>
-        </ul>
-      </section>
-      
-      <section id="cookies" class="content-section">
-        <h2>6. Cookie Usage</h2>
-        <p>We use cookies and similar tracking technologies (such as local web storage and beacons) to enhance user navigation and maintain state parameters. You can adjust your browser settings to reject cookies, though some platform features may cease to function correctly.</p>
-        
-        <h3>Types of Cookies We Use</h3>
-        <ul>
-          <li><strong>Authentication & Session Cookies:</strong> Essential for keeping you logged in as you navigate the maritime marketplace.</li>
-          <li><strong>Shopping Cart & Preferences:</strong> Remember items added to purchase orders and retain selected filters or UI preferences.</li>
-          <li><strong>Analytics & Performance:</strong> Aggregated, anonymous metrics (via Google Analytics) to study user counts, layout efficacy, and page speeds.</li>
-        </ul>
-      </section>
-      
-      <section id="third-party" class="content-section">
-        <h2>7. Third Party Services</h2>
-        <p>The SEAGO MARKET mobile applications and website use several external services and libraries to provide core marketplace, payment, and AI operations. These third-party services process data under their respective privacy policies:</p>
-        
-        <ul>
-          <li><strong>Google Gemini API (Generative Language Service):</strong> Used to power the <strong>AI Chat Assistant</strong> and the administrator's bulk product scanner. Product catalogs, chat prompts, and uploaded bills/nota data are parsed using Google Gemini AI.</li>
-          <li><strong>WhatsApp Business / Link Integration:</strong> Used to route checkout orders, receipt confirmations, and merchant notification alerts between crews, store owners, and administrators.</li>
-          <li><strong>Google Play Services:</strong> Core application utilities and framework integration for Android devices.</li>
-          <li><strong>Firebase:</strong> Secure database synchronization, real-time analytics, push notification routing, and application crash telemetry (Crashlytics).</li>
-          <li><strong>Google Analytics:</strong> Aggregated analytical tracking of Platform traffic, active users, and system performance metrics.</li>
-          <li><strong>Maps & Geolocation APIs:</strong> Used to display vessel schedules and coordinate freight routing at the ports of Ambon, Maluku.</li>
-          <li><strong>Payment Gateways & Banking Systems:</strong> Verified payment systems processing bank transfers and QRIS transactions.</li>
-        </ul>
-      </section>
-      
-      <section id="children" class="content-section">
-        <h2>8. Children's Privacy</h2>
-        <p>Our platform, SEAGO MARKET, operates as a business-to-business (B2B) maritime logistics and ship supply procurement platform. Our services are intended exclusively for business representatives, shipping entities, and individuals who are at least 18 years old or legally competent under Indonesian Civil Law. We do not knowingly collect or request personal data from individuals under 18 years of age. If we learn that we have inadvertently collected personal data from a child under 18 without parental consent, we will delete that information immediately.</p>
-      </section>
-      
-      <section id="retention" class="content-section">
-        <h2>9. Data Retention</h2>
-        <p>We retain your personal data only for as long as your account remains active or as required to fulfill the business purposes detailed in this policy. When data is no longer necessary for these purposes, we safely delete or anonymize it.</p>
-        <p>Under Indonesian financial, accounting, and tax laws, we are legally required to retain transaction histories, invoicing records, and corporate tax receipts for a minimum period of <strong>5 (five) years</strong>. Data may also be retained for longer periods if required under active court proceedings or statutory litigation periods.</p>
-      </section>
-      
-      <section id="changes" class="content-section">
-        <h2>10. Changes to this Policy</h2>
-        <p>We may modify or revise this Privacy Policy periodically to reflect changes in our services, technological advancements, or changes in Indonesian personal data protection laws (UU PDP). If we make material modifications, we will notify you through prominent alerts on our website homepage, in-app notifications, or via email before the changes become active. The "Last Updated" timestamp at the top of this page will change accordingly. We encourage you to review this page regularly to stay informed about our data protection practices.</p>
-      </section>
-      
-      <section id="contact" class="content-section">
-        <h2>11. Contact Information</h2>
-        <p>If you have any questions, concerns, or requests regarding this Privacy Policy, or if you wish to exercise your data subject rights under the Indonesian UU PDP, please contact our Data Protection Officer (DPO):</p>
-        
-        <div class="contact-box">
-          <h3>PT Seago Logistik Maritim</h3>
-          <ul class="contact-details">
-            <li><strong>Email:</strong> <span><a href="mailto:seago.supply@gmail.com">seago.supply@gmail.com</a></span></li>
-            <li><strong>Website:</strong> <span><a href="https://seago.id" target="_blank" rel="noopener">https://seago.id</a></span></li>
-            <li><strong>Business Hours:</strong> <span>Monday – Friday, 08:00 – 17:00 WIB</span></li>
+          
+          <h3>Transaction, Shipping, and Payment Data</h3>
+          <p>When you place an order or coordinate ship supplies on the Platform, we process details related to transaction fulfillment:</p>
+          <ul>
+            <li><strong>Consignee Details:</strong> Customer name, telephone contact, and delivery/shipping address (representing the vessel landing docks at the port).</li>
+            <li><strong>Vessel Schedule Details:</strong> We collect <strong>ship arrival days</strong> (vessel ETA schedules) to synchronize time-sensitive maritime logistics deliveries.</li>
+            <li><strong>Transaction Metadata:</strong> Total order amount, specific ordering items, quantities, and custom delivery notes.</li>
+            <li><strong>Payment Verification:</strong> Selected payment method ('cod' cash on delivery or 'transfer' bank transfer) and <strong>uploaded payment proof files</strong> (images or receipt files representing bank transfers) for verification.</li>
           </ul>
+
+          <h3>AI Chat Assistant Interactions</h3>
+          <p>When you converse with our <strong>AI Chat Assistant</strong> (powered by the Google Gemini API) on the Platform, we process the text prompts and search inquiries you type to retrieve matches from our products directory and offer real-time recommendations.</p>
+          
+          <h3>Information Collected Automatically</h3>
+          <p>When you access our platform via computer or mobile applications, we collect telemetry and device information:</p>
+          <ul>
+            <li><strong>Device Metadata:</strong> IP Address, device model, Operating System version, session tokens, and web browser type.</li>
+            <li><strong>Platform Activity:</strong> Pages visited, clicked links, session timestamps, and product catalog searches.</li>
+            <li><strong>Location Information:</strong> Precise geographical location (GPS coords) is collected <strong>only</strong> if you explicitly grant permission on your mobile device or browser. This is used to coordinate shipping routes and estimated coordinates of maritime vessels for delivery tracking.</li>
+          </ul>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>1. Informasi yang Kami Kumpulkan</h2>
+          <p>Untuk menyediakan layanan marketplace maritim, pasokan kapal, dan integrasi logistik kami, kami mengumpulkan berbagai kategori informasi. Informasi ini diproses dan disimpan di database kami sesuai dengan ketentuan UU PDP.</p>
+          
+          <h3>Informasi yang Diberikan Secara Sukarela</h3>
+          <p>Selama pendaftaran pengguna, orientasi toko mitra, dan proses checkout pesanan, kami mengumpulkan data berikut:</p>
+          <div class="card-grid">
+            <div class="info-card">
+              <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                Akun Pelanggan & Pengguna
+              </h4>
+              <p>Username, Alamat Email, Nomor Telepon, dan kata sandi yang di-hash secara aman. Pengguna dapat terdaftar dengan peran akses 'user' atau 'admin'.</p>
+            </div>
+            <div class="info-card">
+              <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h18v3H3V3z"/></svg>
+                Mitra Toko (Penjual)
+              </h4>
+              <p>Nama Toko, deskripsi bisnis, logo toko, alamat toko, nomor telepon, alamat email, dan informasi rekening bank (nama bank, nama pemilik rekening, dan nomor rekening) untuk memproses pencairan dana toko.</p>
+            </div>
+          </div>
+          
+          <h3>Data Transaksi, Pengiriman, dan Pembayaran</h3>
+          <p>Ketika Anda membuat pesanan atau mengoordinasikan pasokan kapal di Platform, kami memproses rincian terkait pemenuhan transaksi:</p>
+          <ul>
+            <li><strong>Detail Penerima:</strong> Nama pelanggan, kontak telepon, dan alamat pengiriman/logistik (koordinat dermaga kapal bersandar di pelabuhan).</li>
+            <li><strong>Jadwal Kapal:</strong> Kami mengumpulkan data **ship arrival days** (estimasi hari kedatangan kapal/ETA) untuk menyinkronkan pengiriman logistik maritim yang sensitif terhadap waktu.</li>
+            <li><strong>Metadata Transaksi:</strong> Total nominal pesanan, daftar barang yang dipesan, kuantitas, dan catatan khusus pengiriman.</li>
+            <li><strong>Verifikasi Pembayaran:</strong> Metode pembayaran yang dipilih ('cod' bayar di tempat atau 'transfer' bank) serta **file bukti pembayaran yang diunggah** (foto atau file tanda terima transfer bank) untuk verifikasi.</li>
+          </ul>
+
+          <h3>Interaksi AI Chat Assistant</h3>
+          <p>Ketika Anda berinteraksi dengan **AI Chat Assistant** kami (didukung oleh Google Gemini API) di Platform, kami memproses pesan teks dan pencarian produk yang Anda ketik untuk mencocokkan produk di direktori kami secara real-time.</p>
+          
+          <h3>Informasi yang Dikumpulkan Secara Otomatis</h3>
+          <p>Saat Anda mengakses platform kami melalui komputer atau aplikasi seluler, kami mengumpulkan data telemetri dan informasi perangkat:</p>
+          <ul>
+            <li><strong>Metadata Perangkat:</strong> Alamat IP, model perangkat keras, versi Sistem Operasi, token sesi aktif, dan jenis peramban (web browser).</li>
+            <li><strong>Aktivitas Platform:</strong> Halaman yang dikunjungi, tautan yang diklik, stempel waktu (timestamps) sesi, dan pencarian katalog produk.</li>
+            <li><strong>Informasi Lokasi:</strong> Lokasi geografis yang presisi (koordinat GPS) dikumpulkan **hanya** jika Anda memberikan izin secara eksplisit pada perangkat seluler atau browser Anda. Informasi ini digunakan untuk mengoordinasikan rute pengiriman dan memantau koordinat kapal.</li>
+          </ul>
+        </div>
+      </section>
+      
+      <!-- Section 2 -->
+      <section id="how-use" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>2. How We Use Your Information</h2>
+          <p>We process personal data for legal, operational, and development purposes. The processing is conducted under Indonesian data protection regulations (UU PDP) to fulfill our contractual obligations to you and our legal duties. Specifically, we use your data for:</p>
+          
+          <div class="card-grid">
+            <div class="info-card">
+              <h4>Account & Service Operations</h4>
+              <p>Facilitating customer registration, merchant onboarding, validating store profiles, and authorizing secure user authentication.</p>
+            </div>
+            <div class="info-card">
+              <h4>Order Fulfillment & Logistics</h4>
+              <p>Routing purchase orders to relevant stores, organizing port drop-offs, synchronizing schedules via <strong>ship arrival days</strong>, and generating automatic handover documents and invoices (PDF).</p>
+            </div>
+            <div class="info-card">
+              <h4>Gemini AI Integrations</h4>
+              <p>Powering the <strong>AI Chat Assistant</strong> to match customer messages with product lists, and parsing merchant invoices for inventory updates through the <strong>Gemini AI Bulk Import</strong>.</p>
+            </div>
+            <div class="info-card">
+              <h4>WhatsApp Communication</h4>
+              <p>Forwarding checkout orders and instant notifications directly to Admin and Merchant <strong>WhatsApp</strong> numbers to speed up response times.</p>
+            </div>
+            <div class="info-card">
+              <h4>Payment Proof Verification</h4>
+              <p>Reviewing and validating uploaded <strong>payment proof</strong> bank receipts to transition purchase status from pending to verified.</p>
+            </div>
+            <div class="info-card">
+              <h4>Security & Error Logs</h4>
+              <p>Monitoring session tokens to prevent hijacking, keeping error logs for system maintenance, and shielding database structures from SQL injections.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>2. Bagaimana Kami Menggunakan Informasi Anda</h2>
+          <p>Kami memproses data pribadi untuk tujuan hukum, operasional, dan pengembangan platform. Pemrosesan ini dilakukan berdasarkan peraturan UU PDP untuk memenuhi kewajiban kontrak kami kepada Anda serta tugas hukum kami. Secara spesifik, kami menggunakan data Anda untuk:</p>
+          
+          <div class="card-grid">
+            <div class="info-card">
+              <h4>Operasional Akun & Layanan</h4>
+              <p>Memfasilitasi pendaftaran pelanggan, orientasi penjual mitra, memverifikasi profil toko, dan mengotorisasi autentikasi pengguna yang aman.</p>
+            </div>
+            <div class="info-card">
+              <h4>Pemenuhan Pesanan & Logistik</h4>
+              <p>Meneruskan pesanan pembelian ke toko yang relevan, mengoordinasikan pengiriman pelabuhan, menyinkronkan jadwal melalui **ship arrival days**, dan membuat dokumen serah terima otomatis dan faktur (PDF).</p>
+            </div>
+            <div class="info-card">
+              <h4>Integrasi Gemini AI</h4>
+              <p>Mengoperasikan **AI Chat Assistant** untuk mencocokkan pertanyaan pelanggan dengan daftar produk, serta memproses nota faktur toko menggunakan fitur **Gemini AI Bulk Import**.</p>
+            </div>
+            <div class="info-card">
+              <h4>Komunikasi WhatsApp</h4>
+              <p>Meneruskan rincian pesanan checkout dan notifikasi instan secara langsung ke nomor **WhatsApp** admin dan mitra toko untuk mempercepat proses logistik.</p>
+            </div>
+            <div class="info-card">
+              <h4>Verifikasi Bukti Pembayaran</h4>
+              <p>Meninjau dan memvalidasi file **bukti pembayaran** transfer bank yang diunggah untuk mengubah status pembelian menjadi terverifikasi.</p>
+            </div>
+            <div class="info-card">
+              <h4>Log Keamanan & Sistem</h4>
+              <p>Memantau token sesi untuk mencegah peretasan akun, memelihara berkas log error untuk pemeliharaan sistem, dan melindungi struktur database dari ancaman siber.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 3 -->
+      <section id="data-sharing" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>3. Data Sharing</h2>
+          <p><strong>PT Seago Logistik Maritim does not sell, rent, or trade your personal data to third parties.</strong></p>
+          <p>We may share necessary personal data only with trusted third-party service providers and corporate partners under strict data processing agreements that comply with the UU PDP. Data is shared with:</p>
+          
+          <ol>
+            <li><strong>Shipping Companies & Suppliers:</strong> To coordinate orders, ship supply provisioning, and logistics drop-offs at designated ports.</li>
+            <li><strong>Logistics Partners:</strong> Freight operators, maritime agents, and delivery personnel servicing the ports.</li>
+            <li><strong>Payment Gateways & Banks:</strong> Banking institutions and payment processors to verify and reconcile bank transfer deposits.</li>
+            <li><strong>Cloud Infrastructure Providers:</strong> Secure hosting environments, database engines, and backup systems managing the digital infrastructure in compliance with Indonesian data residency standards.</li>
+            <li><strong>Google Gemini API:</strong> Chat prompts and queries inputted inside the AI Chat Assistant (`ai_chat.php`) are forwarded to Google Gemini APIs to fetch matched products and prices dynamically.</li>
+            <li><strong>WhatsApp Services:</strong> Order invoices and customer telephone coordinates are forwarded via WhatsApp to store owners and administrators to execute procurement updates.</li>
+            <li><strong>Legal & Regulatory Authorities:</strong> Competent government bodies, courts, or law enforcement officers when strictly required by Indonesian legislation or judicial orders.</li>
+          </ol>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>3. Pembagian Data</h2>
+          <p><strong>PT Seago Logistik Maritim tidak menjual, menyewakan, atau memperdagangkan data pribadi Anda kepada pihak ketiga.</strong></p>
+          <p>Kami hanya membagikan data pribadi yang diperlukan kepada penyedia layanan pihak ketiga tepercaya dan mitra korporat di bawah perjanjian pemrosesan data ketat yang mematuhi UU PDP. Data dibagikan kepada:</p>
+          
+          <ol>
+            <li><strong>Perusahaan Pelayaran & Pemasok:</strong> Untuk mengoordinasikan pesanan, pasokan kebutuhan kapal, dan pengiriman barang di pelabuhan yang ditentukan.</li>
+            <li><strong>Mitra Logistik:</strong> Operator pengiriman barang, agen kapal, dan personel pengiriman yang melayani pelabuhan.</li>
+            <li><strong>Gerbang Pembayaran & Bank:</strong> Lembaga perbankan dan pemroses pembayaran untuk memverifikasi dan mencocokkan setoran transfer bank.</li>
+            <li><strong>Penyedia Infrastruktur Cloud:</strong> Lingkungan hosting yang aman, mesin basis data, dan sistem cadangan yang mengelola infrastruktur digital sesuai dengan standar kedaulatan data di Indonesia.</li>
+            <li><strong>Google Gemini API:</strong> Pesan obrolan dan pertanyaan yang dimasukkan ke dalam AI Chat Assistant (`ai_chat.php`) diteruskan ke Google Gemini API untuk mendapatkan rekomendasi produk secara dinamis.</li>
+            <li><strong>Layanan WhatsApp:</strong> Faktur pesanan dan nomor telepon pelanggan diteruskan via WhatsApp kepada pemilik toko dan admin untuk mempercepat koordinasi pasokan kapal.</li>
+            <li><strong>Otoritas Hukum & Regulasi:</strong> Badan pemerintah yang berwenang, pengadilan, atau aparat penegak hukum jika secara tegas diwajibkan oleh undang-undang Indonesia atau perintah pengadilan.</li>
+          </ol>
+        </div>
+      </section>
+      
+      <!-- Section 4 -->
+      <section id="data-security" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>4. Data Security</h2>
+          <p>We implement a robust, defense-in-depth security framework to safeguard personal data against unauthorized access, manipulation, leakage, or loss. Our administrative and technical protections include:</p>
+          
+          <div class="card-grid">
+            <div class="info-card">
+              <h4>Network Encryption</h4>
+              <p>Mandatory HTTPS connection protocol across all services with transport-layer SSL/TLS encryption for data in transit.</p>
+            </div>
+            <div class="info-card">
+              <h4>Access Controls</h4>
+              <p>Strict role-based access control (RBAC) ensuring only authorized SEAGO compliance staff can interact with core user data.</p>
+            </div>
+            <div class="info-card">
+              <h4>Cryptography</h4>
+              <p>Standardized password hashing (salted bcrypt/argon2) preventing credential exposures and secure database encryption at rest.</p>
+            </div>
+            <div class="info-card">
+              <h4>Infrastructure Defense</h4>
+              <p>Enterprise firewalls, security incident monitoring (SIEM), routine vulnerability assessments, and automatic offsite backups.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>4. Keamanan Data</h2>
+          <p>Kami menerapkan kerangka keamanan berlapis yang kuat untuk melindungi data pribadi Anda dari akses tidak sah, manipulasi, kebocoran, atau kehilangan. Perlindungan administratif dan teknis kami meliputi:</p>
+          
+          <div class="card-grid">
+            <div class="info-card">
+              <h4>Enkripsi Jaringan</h4>
+              <p>Protokol koneksi HTTPS wajib di seluruh layanan dengan enkripsi SSL/TLS tingkat transport untuk data yang sedang dikirim.</p>
+            </div>
+            <div class="info-card">
+              <h4>Kontrol Akses</h4>
+              <p>Kontrol akses berbasis peran (RBAC) yang ketat untuk memastikan hanya staf kepatuhan SEAGO yang memiliki otorisasi yang dapat berinteraksi dengan database inti.</p>
+            </div>
+            <div class="info-card">
+              <h4>Kriptografi</h4>
+              <p>Penggunaan hashing kata sandi standar industri (bcrypt/argon2 dengan garam) untuk mencegah paparan kredensial dan enkripsi database saat istirahat.</p>
+            </div>
+            <div class="info-card">
+              <h4>Pertahanan Infrastruktur</h4>
+              <p>Firewall korporat, pemantauan insiden keamanan (SIEM), penilaian kerentanan rutin, dan pencadangan otomatis di lokasi terpisah.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 5 -->
+      <section id="user-rights" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>5. User Rights</h2>
+          <p>In accordance with Chapter VI of Law No. 27 of 2022 on Personal Data Protection (UU PDP), as a data subject, you hold specific enforceable statutory rights. You may execute these rights at any time by contacting our support team:</p>
+          
+          <ul>
+            <li><strong>Right to Access:</strong> Request a comprehensive copy of your personal data stored in our databases.</li>
+            <li><strong>Right to Rectification:</strong> Request correction of incomplete, inaccurate, or outdated data associated with your SEAGO MARKET account.</li>
+            <li><strong>Right to Erasure (Right to be Forgotten):</strong> Request the permanent deletion of your account and related records, subject to regulatory retention laws.</li>
+            <li><strong>Right to Data Portability:</strong> Obtain a structured, commonly used machine-readable copy of your personal data for transmission to another data controller.</li>
+            <li><strong>Right to Withdraw Consent:</strong> Revoke consent previously granted for optional processing (e.g., location tracking, marketing alerts).</li>
+            <li><strong>Right to Object:</strong> Oppose or request restriction of data processing for specific activities.</li>
+          </ul>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>5. Hak Pengguna</h2>
+          <p>Sesuai dengan Bab VI Undang-Undang No. 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP), sebagai subjek data, Anda memiliki hak-hak hukum tertentu yang dapat dilaksanakan. Anda dapat menggunakan hak-hak ini kapan saja dengan menghubungi tim dukungan kami:</p>
+          
+          <ul>
+            <li><strong>Hak untuk Mengakses:</strong> Meminta salinan lengkap data pribadi Anda yang disimpan dalam database kami.</li>
+            <li><strong>Hak untuk Memperbaiki (Rektifikasi):</strong> Meminta koreksi atas data yang tidak lengkap, tidak akurat, atau kedaluwarsa yang terkait dengan akun SEAGO MARKET Anda.</li>
+            <li><strong>Hak untuk Menghapus (Hak untuk Dilupakan):</strong> Meminta penghapusan permanen akun dan catatan terkait Anda, dengan tunduk pada undang-undang retensi regulasi.</li>
+            <li><strong>Hak atas Portabilitas Data:</strong> Memperoleh salinan data pribadi Anda dalam format terstruktur dan umum yang dapat dibaca mesin untuk ditransfer ke pengendali data lain.</li>
+            <li><strong>Hak untuk Menarik Persetujuan:</strong> Mencabut persetujuan yang sebelumnya diberikan untuk pemrosesan opsional (misalnya, pelacakan lokasi atau peringatan pemberitahuan).</li>
+            <li><strong>Hak untuk Menolak:</strong> Menentang atau meminta pembatasan pemrosesan data untuk aktivitas tertentu.</li>
+          </ul>
+        </div>
+      </section>
+      
+      <!-- Section 6 -->
+      <section id="cookies" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>6. Cookie Usage</h2>
+          <p>We use cookies and similar tracking technologies (such as local web storage and beacons) to enhance user navigation and maintain state parameters. You can adjust your browser settings to reject cookies, though some platform features may cease to function correctly.</p>
+          
+          <h3>Types of Cookies We Use</h3>
+          <ul>
+            <li><strong>Authentication & Session Cookies:</strong> Essential for keeping you logged in as you navigate the maritime marketplace.</li>
+            <li><strong>Shopping Cart & Preferences:</strong> Remember items added to purchase orders and retain selected filters or UI preferences.</li>
+            <li><strong>Analytics & Performance:</strong> Aggregated, anonymous metrics (via Google Analytics) to study user counts, layout efficacy, and page speeds.</li>
+          </ul>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>6. Penggunaan Cookie</h2>
+          <p>Kami menggunakan cookie dan teknologi pelacakan serupa (seperti penyimpanan web lokal dan beacon) untuk meningkatkan navigasi pengguna dan mempertahankan parameter sesi. Anda dapat menyesuaikan pengaturan browser Anda untuk menolak cookie, meskipun beberapa fitur platform mungkin tidak berfungsi dengan baik.</p>
+          
+          <h3>Jenis Cookie yang Kami Gunakan</h3>
+          <ul>
+            <li><strong>Cookie Autentikasi & Sesi:</strong> Sangat penting untuk menjaga Anda tetap masuk saat menavigasi marketplace maritim.</li>
+            <li><strong>Keranjang Belanja & Preferensi:</strong> Mengingat barang-barang yang ditambahkan ke pesanan pembelian dan mempertahankan filter atau preferensi UI yang dipilih.</li>
+            <li><strong>Analitik & Performa:</strong> Metrik agregat anonim (melalui Google Analytics) untuk mempelajari jumlah pengguna, efektivitas tata letak, dan kecepatan halaman.</li>
+          </ul>
+        </div>
+      </section>
+      
+      <!-- Section 7 -->
+      <section id="third-party" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>7. Third Party Services</h2>
+          <p>The SEAGO MARKET mobile applications and website use several external services and libraries to provide core marketplace, payment, and AI operations. These third-party services process data under their respective privacy policies:</p>
+          
+          <ul>
+            <li><strong>Google Gemini API (Generative Language Service):</strong> Used to power the <strong>AI Chat Assistant</strong> and the administrator's bulk product scanner. Product catalogs, chat prompts, and uploaded bills/nota data are parsed using Google Gemini AI.</li>
+            <li><strong>WhatsApp Business / Link Integration:</strong> Used to route checkout orders, receipt confirmations, and merchant notification alerts between crews, store owners, and administrators.</li>
+            <li><strong>Google Play Services:</strong> Core application utilities and framework integration for Android devices.</li>
+            <li><strong>Firebase:</strong> Secure database synchronization, real-time analytics, push notification routing, and application crash telemetry (Crashlytics).</li>
+            <li><strong>Google Analytics:</strong> Aggregated analytical tracking of Platform traffic, active users, and system performance metrics.</li>
+            <li><strong>Maps & Geolocation APIs:</strong> Used to display vessel schedules and coordinate freight routing at the ports of Ambon, Maluku.</li>
+            <li><strong>Payment Gateways & Banking Systems:</strong> Verified payment systems processing bank transfers and QRIS transactions.</li>
+          </ul>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>7. Layanan Pihak Ketiga</h2>
+          <p>Aplikasi seluler dan situs web SEAGO MARKET menggunakan beberapa layanan dan pustaka eksternal untuk menyediakan operasi pasar, pembayaran, dan AI utama. Layanan pihak ketiga ini memproses data berdasarkan kebijakan privasi masing-masing:</p>
+          
+          <ul>
+            <li><strong>Google Gemini API (Generative Language Service):</strong> Digunakan untuk menjalankan **AI Chat Assistant** serta fitur pemindai produk massal admin. Kueri obrolan, data katalog produk, dan foto nota yang diunggah diproses dengan model kecerdasan buatan Gemini.</li>
+            <li><strong>Integrasi WhatsApp:</strong> Digunakan untuk meneruskan pesanan checkout pelanggan, konfirmasi tanda terima, dan peringatan kepada pemilik toko dan administrator secara instan.</li>
+            <li><strong>Google Play Services:</strong> Utilitas inti aplikasi dan integrasi kerangka kerja untuk perangkat Android.</li>
+            <li><strong>Firebase:</strong> Sinkronisasi database yang aman, analitik real-time, perutean pemberitahuan push, dan telemetri kerusakan aplikasi (Crashlytics).</li>
+            <li><strong>Google Analytics:</strong> Pelacakan analitis agregat dari lalu lintas Platform, jumlah pengguna aktif, dan metrik kinerja sistem.</li>
+            <li><strong>API Peta & Geolokasi:</strong> Digunakan untuk menampilkan jadwal kedatangan kapal dan mengatur perutean pengiriman barang di pelabuhan Ambon, Maluku.</li>
+            <li><strong>Gerbang Pembayaran & Sistem Perbankan:</strong> Sistem pembayaran terverifikasi untuk memproses transfer bank dan transaksi QRIS.</li>
+          </ul>
+        </div>
+      </section>
+      
+      <!-- Section 8 -->
+      <section id="children" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>8. Children's Privacy</h2>
+          <p>Our platform, SEAGO MARKET, operates as a B2B maritime logistics and ship supply procurement platform. Our services are intended exclusively for business representatives, shipping entities, and individuals who are at least 18 years old or legally competent under Indonesian Civil Law. We do not knowingly collect or request personal data from individuals under 18 years of age. If we learn that we have inadvertently collected personal data from a child under 18 without parental consent, we will delete that information immediately.</p>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>8. Privasi Anak-anak</h2>
+          <p>Platform kami, SEAGO MARKET, beroperasi sebagai platform logistik maritim dan pengadaan pasokan kapal B2B. Layanan kami ditujukan secara eksklusif untuk perwakilan bisnis, entitas pelayaran, dan individu yang berusia setidaknya 18 tahun atau cakap secara hukum berdasarkan Hukum Perdata Indonesia. Kami tidak secara sengaja mengumpulkan atau meminta data pribadi dari individu di bawah usia 18 tahun. Jika kami mengetahui bahwa kami secara tidak sengaja mengumpulkan data pribadi anak di bawah 18 tahun tanpa persetujuan orang tua, kami akan segera menghapus informasi tersebut.</p>
+        </div>
+      </section>
+      
+      <!-- Section 9 -->
+      <section id="retention" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>9. Data Retention</h2>
+          <p>We retain your personal data only for as long as your account remains active or as required to fulfill the business purposes detailed in this policy. When data is no longer necessary for these purposes, we safely delete or anonymize it.</p>
+          <p>Under Indonesian financial, accounting, and tax laws, we are legally required to retain transaction histories, invoicing records, and corporate tax receipts for a minimum period of <strong>5 (five) years</strong>. Data may also be retained for longer periods if required under active court proceedings or statutory litigation periods.</p>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>9. Retensi Data</h2>
+          <p>Kami menyimpan data pribadi Anda hanya selama akun Anda tetap aktif atau sebagaimana diperlukan untuk memenuhi tujuan bisnis yang dijelaskan dalam kebijakan ini. Ketika data tidak lagi diperlukan untuk tujuan tersebut, kami akan menghapus atau menyamarkannya secara aman.</p>
+          <p>Berdasarkan undang-undang keuangan, akuntansi, dan perpajakan Indonesia, kami diwajibkan secara hukum untuk menyimpan riwayat transaksi, catatan faktur, dan kwitansi pajak perusahaan untuk jangka waktu minimal **5 (lima) tahun**. Data juga dapat disimpan untuk jangka waktu yang lebih lama jika diperlukan dalam proses pengadilan yang aktif atau periode litigasi wajib.</p>
+        </div>
+      </section>
+      
+      <!-- Section 10 -->
+      <section id="changes" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>10. Changes to this Policy</h2>
+          <p>We may modify or revise this Privacy Policy periodically to reflect changes in our services, technological advancements, or changes in Indonesian personal data protection laws (UU PDP). If we make material modifications, we will notify you through prominent alerts on our website homepage, in-app notifications, or via email before the changes become active. The "Last Updated" timestamp at the top of this page will change accordingly. We encourage you to review this page regularly to stay informed about our data protection practices.</p>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>10. Perubahan Kebijakan Ini</h2>
+          <p>Kami dapat mengubah atau merevisi Kebijakan Privasi ini secara berkala untuk mencerminkan perubahan dalam layanan kami, kemajuan teknologi, atau perubahan dalam hukum pelindungan data pribadi Indonesia (UU PDP). Jika kami melakukan perubahan material, kami akan memberi tahu Anda melalui pengumuman di beranda situs web kami, notifikasi dalam aplikasi, atau melalui email sebelum perubahan tersebut aktif. Stempel waktu "Terakhir Diperbarui" di bagian atas halaman ini akan berubah sesuai dengan pembaruan tersebut. Kami menyarankan Anda untuk meninjau halaman ini secara berkala agar tetap mendapatkan informasi terbaru tentang praktik pelindungan data kami.</p>
+        </div>
+      </section>
+      
+      <!-- Section 11 -->
+      <section id="contact" class="content-section">
+        <!-- English -->
+        <div class="lang-en">
+          <h2>11. Contact Information</h2>
+          <p>If you have any questions, concerns, or requests regarding this Privacy Policy, or if you wish to exercise your data subject rights under the Indonesian UU PDP, please contact our Data Protection Officer (DPO):</p>
+          
+          <div class="contact-box">
+            <h3>PT Seago Logistik Maritim</h3>
+            <ul class="contact-details">
+              <li><strong>Email:</strong> <span><a href="mailto:seago.supply@gmail.com">seago.supply@gmail.com</a></span></li>
+              <li><strong>Website:</strong> <span><a href="https://seago.id" target="_blank" rel="noopener">https://seago.id</a></span></li>
+              <li><strong>Business Hours:</strong> <span>Monday – Friday, 08:00 – 17:00 WIB</span></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Indonesian -->
+        <div class="lang-id">
+          <h2>11. Informasi Kontak</h2>
+          <p>Jika Anda memiliki pertanyaan, kekhawatiran, atau permintaan mengenai Kebijakan Privasi ini, atau jika Anda ingin menggunakan hak subjek data Anda berdasarkan UU PDP Indonesia, silakan hubungi Petugas Pelindungan Data (DPO) kami:</p>
+          
+          <div class="contact-box">
+            <h3>PT Seago Logistik Maritim</h3>
+            <ul class="contact-details">
+              <li><strong>Email:</strong> <span><a href="mailto:seago.supply@gmail.com">seago.supply@gmail.com</a></span></li>
+              <li><strong>Situs Web:</strong> <span><a href="https://seago.id" target="_blank" rel="noopener">https://seago.id</a></span></li>
+              <li><strong>Jam Operasional:</strong> <span>Senin – Jumat, 08:00 – 17:00 WIB</span></li>
+            </ul>
+          </div>
         </div>
       </section>
       
@@ -345,32 +671,48 @@
       <div class="footer-top">
         <div class="footer-info">
           <img src="logo.png" alt="PT Seago Logistik Maritim Logo" class="footer-logo">
-          <p class="footer-desc">B2B Maritime Marketplace, Ship Provisioning, Marine Services, and Technology Integration. Connecting vessel fleets with validated port suppliers across Indonesia.</p>
+          
+          <p class="footer-desc lang-en">B2B Maritime Marketplace, Ship Provisioning, Marine Services, and Technology Integration. Connecting vessel fleets with validated port suppliers across Indonesia.</p>
+          <p class="footer-desc lang-id">Marketplace Maritim B2B, Pasokan Kapal, Layanan Kelautan, dan Integrasi Teknologi. Menghubungkan armada kapal dengan pemasok pelabuhan tervalidasi di seluruh Indonesia.</p>
         </div>
+        
         <div class="footer-nav">
           <div class="footer-links-group">
             <span class="footer-group-title">Platform</span>
             <ul class="footer-links-list">
-              <li><a href="https://seago.id" class="footer-link">Marketplace</a></li>
-              <li><a href="https://seago.id" class="footer-link">Port Network</a></li>
-              <li><a href="https://seago.id" class="footer-link">Suppliers</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-en">Marketplace</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-id">Pasar</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-en">Port Network</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-id">Jaringan Pelabuhan</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-en">Suppliers</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-id">Pemasok</a></li>
             </ul>
           </div>
+          
           <div class="footer-links-group">
-            <span class="footer-group-title">Company</span>
+            <span class="footer-group-title lang-en">Company</span>
+            <span class="footer-group-title lang-id">Perusahaan</span>
             <ul class="footer-links-list">
-              <li><a href="https://seago.id" class="footer-link">About</a></li>
-              <li><a href="https://seago.id" class="footer-link">Careers</a></li>
-              <li><a href="https://seago.id" class="footer-link">Contact</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-en">About</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-id">Tentang Kami</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-en">Careers</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-id">Karir</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-en">Contact</a></li>
+              <li><a href="https://seago.id" class="footer-link lang-id">Hubungi Kami</a></li>
             </ul>
           </div>
         </div>
       </div>
+      
       <div class="footer-bottom">
-        <p>Copyright &copy; 2026 PT Seago Logistik Maritim. All Rights Reserved.</p>
+        <p class="lang-en">Copyright &copy; 2026 PT Seago Logistik Maritim. All Rights Reserved.</p>
+        <p class="lang-id">Hak Cipta &copy; 2026 PT Seago Logistik Maritim. Semua Hak Dilindungi.</p>
+        
         <div class="footer-legal-links">
-          <a href="https://seago.id" class="footer-link">Terms & Conditions</a>
-          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="https://seago.id" class="footer-link lang-en">Terms & Conditions</a>
+          <a href="https://seago.id" class="footer-link lang-id">Syarat & Ketentuan</a>
+          <a href="#" class="footer-link lang-en">Privacy Policy</a>
+          <a href="#" class="footer-link lang-id">Kebijakan Privasi</a>
         </div>
       </div>
     </div>
@@ -391,14 +733,44 @@
           localStorage.setItem('theme', 'dark');
         }
       });
+
+      // Language Switcher Logic
+      const langBtns = document.querySelectorAll('.lang-btn');
+      
+      function setLanguage(lang) {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('lang', lang);
+        
+        langBtns.forEach(btn => {
+          if (btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+        
+        // Update active class on table of contents links
+        updateActiveSection();
+      }
+      
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.getAttribute('data-lang');
+          setLanguage(lang);
+        });
+      });
+      
+      // Initialize Switcher UI state to match FOUC preload
+      const activeLang = document.documentElement.getAttribute('lang') || 'en';
+      setLanguage(activeLang);
       
       // Scroll spy & Active Section Highlighting
       const sections = document.querySelectorAll('.content-section');
-      const tocLinks = document.querySelectorAll('.toc-link');
       const mobileNavSelect = document.getElementById('mobile-nav-select');
       
       function updateActiveSection() {
         const scrollPos = window.scrollY + 120; // offset header
+        const currentLang = document.documentElement.getAttribute('lang') || 'en';
         
         let activeSectionId = '';
         sections.forEach(section => {
@@ -411,8 +783,13 @@
         });
         
         if (activeSectionId) {
+          // Select links of the current language inside TOC
+          const tocLinks = document.querySelectorAll(`.toc-link.lang-${currentLang}`);
+          const allLinks = document.querySelectorAll('.toc-link');
+          
+          allLinks.forEach(link => link.classList.remove('active'));
+          
           tocLinks.forEach(link => {
-            link.classList.remove('active');
             if (link.getAttribute('href') === `#${activeSectionId}`) {
               link.classList.add('active');
             }
@@ -461,6 +838,9 @@
           behavior: 'smooth'
         });
       });
+      
+      // Final run on initialization
+      updateActiveSection();
     });
   </script>
 </body>
